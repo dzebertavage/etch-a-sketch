@@ -7,7 +7,12 @@ function createDiv() {
     gridContainer.appendChild(gridSquare);
 }
 
-createDiv();
+function getUserNumber() {
+    let userNumber = prompt("Enter a number from 1-100");
+    userNumber = parseInt(userNumber);
+    return userNumber;
+}
+
 
 /*
 - variable to hold number of columns
