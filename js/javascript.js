@@ -1,5 +1,5 @@
 const gridContainer = document.querySelector(".grid-container");
-let gridNumber = 16;
+let userNumber = 16;
 
 function createDiv() {
     const gridSquare = document.createElement("div");
@@ -15,6 +15,12 @@ function getUserNumber() {
     } else {
         userNumber = parseInt(userNumber);
         return userNumber;
+    }
+}
+
+function generateGrid(userNumber) {
+    for (i = 0; i < userNumber; i++) {
+        createDiv();
     }
 }
 
