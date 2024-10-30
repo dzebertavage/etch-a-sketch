@@ -11,6 +11,11 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    height: 800px;
-    width: 800px;
+    column-gap: 0;
+    row-gap: 0;
+}
+
+.grid-square {
+    background: rgb(235,235,235);
+    background: radial-gradient(circle, rgba(235,235,235,1) 0%, rgba(74,74,74,1) 100%);
 }

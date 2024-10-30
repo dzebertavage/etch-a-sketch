@@ -1,10 +1,16 @@
 const gridContainer = document.querySelector(".grid-container");
+const containerDim = "800px";
+gridContainer.style.height = containerDim;
+gridContainer.style.width = containerDim;
 let userNumber = 16;
 
-function createDiv() {
+function createDiv(userNumber) {
+    let squareDim = gridContainer.offsetHeight / userNumber;
     const gridSquare = document.createElement("div");
-    gridSquare.classList.add("grid-square");
     gridContainer.appendChild(gridSquare);
+    gridSquare.classList.add("grid-square");
+    gridSquare.style.width = squareDim + "px";
+    gridSquare.style.height = squareDim + "px";
 }
 
 function getUserNumber() {
@@ -13,16 +19,18 @@ function getUserNumber() {
         alert(`Error - "${userNumber}" is not a number!`);
         return;
     } else {
-        userNumber = parseInt(userNumber);
+        userNumber = parseInt(userNumber);;
         return userNumber;
     }
 }
 
 function generateGrid(userNumber) {
     for (i = 0; i < userNumber; i++) {
-        createDiv();
+        createDiv(userNumber);
     }
 }
+
+generateGrid(userNumber);
 
 /*
 - variable to hold number of columns
