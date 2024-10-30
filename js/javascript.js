@@ -1,8 +1,18 @@
 const gridContainer = document.querySelector(".grid-container");
 const containerDim = "800px";
+let userNumber = 20;
+addHoverStyle();
 gridContainer.style.height = containerDim;
 gridContainer.style.width = containerDim;
-let userNumber = 16;
+
+function addHoverStyle() {
+    const squareHover = `.grid-square:hover {
+    background-color: grey;
+}`
+    const newStyle = document.createElement("style");
+    newStyle.textContent = squareHover;
+    document.head.appendChild(newStyle);
+}
 
 function createDiv(userNumber) {
     let squareDim = gridContainer.offsetHeight / userNumber;
@@ -12,6 +22,7 @@ function createDiv(userNumber) {
     gridSquare.style.width = squareDim + "px";
     gridSquare.style.height = squareDim + "px";
     gridSquare.style.flexBasis = 100 / userNumber + "%";
+
 }
 
 function getUserNumber() {
