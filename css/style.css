@@ -11,8 +11,6 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    column-gap: 0;
-    row-gap: 0;
 }
 
 .grid-square {

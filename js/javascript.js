@@ -11,6 +11,7 @@ function createDiv(userNumber) {
     gridSquare.classList.add("grid-square");
     gridSquare.style.width = squareDim + "px";
     gridSquare.style.height = squareDim + "px";
+    gridSquare.style.flexBasis = 100 / userNumber + "%";
 }
 
 function getUserNumber() {
@@ -25,7 +26,7 @@ function getUserNumber() {
 }
 
 function generateGrid(userNumber) {
-    for (i = 0; i < userNumber; i++) {
+    for (i = 0; i < Math.pow(userNumber, 2); i++) {
         createDiv(userNumber);
     }
 }
