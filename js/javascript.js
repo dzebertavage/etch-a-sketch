@@ -1,7 +1,7 @@
 const gridContainer = document.querySelector(".grid-container");
 const containerDim = "800px";
 const body = document.querySelector("body");
-let userNumber = 20;
+let userNumber = 2;
 addHoverStyle();
 gridContainer.style.height = containerDim;
 gridContainer.style.width = containerDim;
@@ -26,24 +26,24 @@ function createDiv(userNumber) {
 
 }
 
-function generateUserButton() {
-    const btnContainer = document.createElement("div");
-    body.insertBefore(btnContainer, gridContainer);
-    btnContainer.classList.toggle("btn-container");
-    const btn = document.createElement("button");
-    btnContainer.appendChild(btn);
-    btn.classList.toggle("btn");
-    btn.textContent = "Change Grid Size";
-}
-
 function getUserNumber() {
     let userNumber = prompt("Enter a number from 1-100");
     if (isNaN(userNumber)) {
-        alert(`Error - "${userNumber}" is not a number!`);
+        alert(`Error: "${userNumber}" is not a number!`);
         return;
     } else {
-        userNumber = parseInt(userNumber);;
-        return userNumber;
+        if (userNumber % 1 != 0) {
+            alert("Error: Number must be a whole number!")
+            return;
+        } else {
+            userNumber = parseInt(userNumber);
+            if (userNumber > 100 || userNumber < 1) {
+                alert("Error: Number must be from 1-100!")
+                return;
+            } else {
+                return userNumber;
+            }
+        }
     }
 }
 
@@ -53,5 +53,22 @@ function generateGrid(userNumber) {
     }
 }
 
-generateUserButton();
+function removeGrid() {
+    document.querySelectorAll(".grid-square").forEach(e => e.remove());
+}
+
+const btnContainer = document.createElement("div");
+body.insertBefore(btnContainer, gridContainer);
+btnContainer.classList.toggle("btn-container");
+const btn = document.createElement("button");
+btnContainer.appendChild(btn);
+btn.classList.toggle("btn");
+btn.textContent = "Change Grid Size";
+
 generateGrid(userNumber);
+
+btn.addEventListener("click", () => {
+    removeGrid();
+    userNumber = getUserNumber();
+    generateGrid(userNumber)
+});
