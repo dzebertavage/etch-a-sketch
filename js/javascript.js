@@ -1,5 +1,6 @@
 const gridContainer = document.querySelector(".grid-container");
 const containerDim = "800px";
+const body = document.querySelector("body");
 let userNumber = 20;
 addHoverStyle();
 gridContainer.style.height = containerDim;
@@ -25,6 +26,16 @@ function createDiv(userNumber) {
 
 }
 
+function generateUserButton() {
+    const btnContainer = document.createElement("div");
+    body.insertBefore(btnContainer, gridContainer);
+    btnContainer.classList.toggle("btn-container");
+    const btn = document.createElement("button");
+    btnContainer.appendChild(btn);
+    btn.classList.toggle("btn");
+    btn.textContent = "Change Grid Size";
+}
+
 function getUserNumber() {
     let userNumber = prompt("Enter a number from 1-100");
     if (isNaN(userNumber)) {
@@ -42,11 +53,5 @@ function generateGrid(userNumber) {
     }
 }
 
+generateUserButton();
 generateGrid(userNumber);
-
-/*
-- variable to hold number of columns
-- create function that places a div
-- loop function based on column number variable
-- 
-*/
