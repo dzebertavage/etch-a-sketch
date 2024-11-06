@@ -2,17 +2,12 @@ const gridContainer = document.querySelector(".grid-container");
 const containerDim = "800px";
 const body = document.querySelector("body");
 let userNumber = 2;
-addHoverStyle();
 gridContainer.style.height = containerDim;
 gridContainer.style.width = containerDim;
 
-function addHoverStyle() {
-    const squareHover = `.grid-square:hover {
-    background-color: grey;
-}`
-    const newStyle = document.createElement("style");
-    newStyle.textContent = squareHover;
-    document.head.appendChild(newStyle);
+function getRandomHex() {
+    var randomColor = "#000000".replace(/0/g,function(){return (~~(Math.random()*16)).toString(16);});
+    return randomColor;
 }
 
 function createDiv(userNumber) {
@@ -23,7 +18,20 @@ function createDiv(userNumber) {
     gridSquare.style.width = squareDim + "px";
     gridSquare.style.height = squareDim + "px";
     gridSquare.style.flexBasis = 100 / userNumber + "%";
-
+    gridSquare.style.backgroundColor = "#23222a";
+    gridSquare.style.opacity = "1.0";
+    let newHoverColor;
+    gridSquare.addEventListener("mouseenter", () => {
+        newHoverColor = getRandomHex();
+        let squareOpacity = gridSquare.style.opacity;
+        squareOpacity = Number(squareOpacity).toFixed(1);
+        squareOpacity = squareOpacity - 0.1;
+        gridSquare.style.opacity = squareOpacity;
+        gridSquare.style.backgroundColor = newHoverColor;
+    });
+    gridSquare.addEventListener("mouseleave", () => {
+        gridSquare.style.backgroundColor = "transparent";
+    });
 }
 
 function getUserNumber() {
@@ -72,3 +80,4 @@ btn.addEventListener("click", () => {
     userNumber = getUserNumber();
     generateGrid(userNumber)
 });
+
