@@ -1,7 +1,7 @@
 const gridContainer = document.querySelector(".grid-container");
 const containerDim = "800px";
 const body = document.querySelector("body");
-let userNumber = 2;
+let userNumber = 6;
 gridContainer.style.height = containerDim;
 gridContainer.style.width = containerDim;
 
